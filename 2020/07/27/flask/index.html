@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Flask | MrZhouBlog</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    
+    <meta name="description" content="
+简介
+基于Python网络框架开发的常用知识,及目前的4种主流Python网络框架：Django（最早、最完备）、Tornado（2009年，支持异步高并发）、Flask（2010年，着眼于小项目）、Twisted。
+依赖
+ Werkzeug实现WSGI，这是应用程序和服务器之间的标准Python接口。
+
+ Jinja是一种模板语言，可呈现您的应用程序服务的页面。
+ ...">
+    <link rel="preload" href="/assets/css/0.styles.b49f391b.css" as="style"><link rel="preload" href="/assets/js/app.1cdf4e16.js" as="script"><link rel="preload" href="/assets/js/6.827eb7e7.js" as="script"><link rel="preload" href="/assets/js/3.7a77b099.js" as="script"><link rel="preload" href="/assets/js/22.a3cb521d.js" as="script"><link rel="prefetch" href="/assets/js/10.41ac0210.js"><link rel="prefetch" href="/assets/js/11.8c04e0c4.js"><link rel="prefetch" href="/assets/js/12.f544a701.js"><link rel="prefetch" href="/assets/js/13.888b19c8.js"><link rel="prefetch" href="/assets/js/14.cd9af50d.js"><link rel="prefetch" href="/assets/js/15.f90da16c.js"><link rel="prefetch" href="/assets/js/16.bb43e446.js"><link rel="prefetch" href="/assets/js/17.769ead98.js"><link rel="prefetch" href="/assets/js/18.18926561.js"><link rel="prefetch" href="/assets/js/19.d74f3a55.js"><link rel="prefetch" href="/assets/js/20.07b09e6d.js"><link rel="prefetch" href="/assets/js/21.b63db52c.js"><link rel="prefetch" href="/assets/js/23.03740915.js"><link rel="prefetch" href="/assets/js/24.c20f7419.js"><link rel="prefetch" href="/assets/js/25.e7577906.js"><link rel="prefetch" href="/assets/js/26.2e73e732.js"><link rel="prefetch" href="/assets/js/27.7f4d4b9c.js"><link rel="prefetch" href="/assets/js/4.12b2ac04.js"><link rel="prefetch" href="/assets/js/5.9435690e.js"><link rel="prefetch" href="/assets/js/7.c2bcb612.js"><link rel="prefetch" href="/assets/js/8.ddca3970.js"><link rel="prefetch" href="/assets/js/9.4817e529.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.28069103.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b49f391b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuepress-theme-blog__global-layout"><section id="header-wrapper"><header id="header"><div class="header-wrapper"><div class="title"><a href="/" class="nav-link home-link">MrZhouBlog </a></div> <div class="header-right-wrap"><ul class="nav"><li class="nav-item"><a href="/" class="nav-link">Blog</a></li><li class="nav-item"><a href="http://localhost:5000" target="_blank" rel="noopener noreferrer" class="nav-link external">New</a></li><li class="nav-item"><a href="/2020/09/15/posts/" class="nav-link">Workspace</a></li></ul> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></div></header></section> <div id="mobile-header"><div class="mobile-header-bar"><div class="mobile-header-title"><a href="/" class="nav-link mobile-home-link">MrZhouBlog </a> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></div> <div class="mobile-menu-wrapper"><hr class="menu-divider"> <ul class="mobile-nav"><li class="mobile-nav-item"><a href="/" class="nav-link">Blog</a></li><li class="mobile-nav-item"><a href="http://localhost:5000" target="_blank" rel="noopener noreferrer" class="nav-link external">New</a></li><li class="mobile-nav-item"><a href="/2020/09/15/posts/" class="nav-link">Workspace</a></li> <li class="mobile-nav-item"><!----></li></ul></div></div></div> <div class="content-wrapper"><div id="vuepress-theme-blog__post-layout"><article itemscope="itemscope" itemtype="https://schema.org/BlogPosting" class="vuepress-blog-theme-content"><header><h1 itemprop="name headline" class="post-title">
+        
+      </h1> <div class="post-meta"><div itemprop="publisher author" itemtype="http://schema.org/Person" itemscope="itemscope" class="post-meta-author"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-navigation"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg> <span itemprop="name">周先森</span> <span itemprop="address">   in SuZhou</span></div> <div class="post-meta-date"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> <time pubdate itemprop="datePublished" datetime="2020-07-27T00:00:00.000Z">
+      Mon Jul 27 2020
+    </time></div> <ul itemprop="keywords" class="post-meta-tags"><li class="post-tag" data-v-42ccfcd5><a href="/tag/python" data-v-42ccfcd5><span data-v-42ccfcd5>python</span></a></li><li class="post-tag" data-v-42ccfcd5><a href="/tag/web" data-v-42ccfcd5><span data-v-42ccfcd5>web</span></a></li></ul></div></header> <div itemprop="articleBody" class="content__default"><h1 id="flask">Flask</h1> <h2 id="简介">简介</h2> <p>基于Python网络框架开发的常用知识,及目前的4种主流Python网络框架：Django（最早、最完备）、Tornado（2009年，支持异步高并发）、Flask（2010年，着眼于小项目）、Twisted。</p> <h2 id="依赖">依赖</h2> <ul><li><p><code>Werkzeug</code>实现WSGI，这是应用程序和服务器之间的标准Python接口。</p></li> <li><p><code>Jinja</code>是一种模板语言，可呈现您的应用程序服务的页面。</p></li> <li><p><code>MarkupSafe</code>随<code>Jinja</code>一起提供。渲染模板时，它会逃脱不受信任的输入，以避免注入攻击。</p></li> <li><p><code>ItsDangerous</code>安全签名数据以确保其完整性。这用于保护Flask的会话cookie。</p></li> <li><p><code>Click</code>是用于编写命令行应用程序的框架。它提供flask命令，并允许添加自定义管理命令。</p></li></ul> <h2 id="python-pip3编译安装">python pip3编译安装</h2> <div class="language- extra-class"><pre class="language-text"><code>安装模块
+wget --no-check-certificate  https://pypi.python.org/packages/source/s/setuptools/setuptools-19.6.tar.gz#md5=c607dd118eae682c44ed146367a17e26
+
+tar -zxvf setuptools-19.6.tar.gz
+
+cd setuptools-19.6.tar.gz
+
+python3 setup.py build
+
+python3 setup.py install
+
+正式安装
+wget --no-check-certificate  https://pypi.python.org/packages/source/p/pip/pip-8.0.2.tar.gz#md5=3a73c4188f8dbad6a1e6f6d44d117eeb
+
+tar -zxvf pip-8.0.2.tar.gz
+
+cd pip-8.0.2
+
+python3 setup.py build
+
+python3 setup.py install
+</code></pre></div><h2 id="构建开发环境">构建开发环境</h2> <div class="language- extra-class"><pre class="language-text"><code>cd pythonWeb
+sudo apt-get install python3-venv
+python3 -m venv venv
+进入虚拟环境
+. venv/bin/activate
+pip3 install Flask
+</code></pre></div><h2 id="快速入门">快速入门</h2> <p>一个最小的Flask应用程序看起来像这样：</p> <div class="language- extra-class"><pre class="language-text"><code>from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+</code></pre></div><p>要运行该应用程序，您可以使用flask命令或-m将Flask与python 一起使用。在执行此操作之前，您需要通过导出FLASK_APP环境变量来告诉终端应用程序可以使用 ：</p> <div class="language- extra-class"><pre class="language-text"><code>$ export FLASK_APP=hello.py
+$ flask run
+ * Running on http://127.0.0.1:5000/
+外部访问
+$ flask run --host=0.0.0.0
+ * Running on http://0.0.0.0:5000/
+</code></pre></div><h2 id="flask之g对象">flask之g对象</h2> <p>1.什么是g对象。
+1.在flask中，有一个专门用来存储用户信息的g对象，g的全称的为global。
+2.g对象在一次请求中的所有的代码的地方，都是可以使用的。</p> <p>2.g对象和session的区别
+在我看来，最大的区别是，session对象是可以跨request的，只要session还未失效，不同的request的请求会获取到同一个session，但是g对象不是，g对象不需要管过期时间，请求一次就g对象就改变了一次，或者重新赋值了一次。那么g对象该如何使用呢？看代码。</p> <p>作者：仙剑奇灵
+链接：https://www.jianshu.com/p/d4385c637d95
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p> <h2 id="唯一url-重定向行为">唯一URL /重定向行为</h2> <div class="language- extra-class"><pre class="language-text"><code>@app.route('/projects/')
+def projects():
+    return 'The project page'
+
+@app.route('/about')
+def about():
+    return 'The about page'
+</code></pre></div><p>projects端点的规范URL 带有斜杠。它类似于文件系统中的文件夹。如果您访问的URL不带斜杠，Flask会将您重定向到带斜杠的规范URL。</p> <p>about端点的规范URL 不带斜杠。它类似于文件的路径名。使用斜杠访问URL会产生404“未找到”错误。这有助于使这些资源的URL保持唯一，从而有助于搜索引擎避免对同一页面进行两次索引。</p> <h2 id="url-for">url_for</h2> <p>url_for操作对象是函数，而不是route里的路径。</p> <div class="language- extra-class"><pre class="language-text"><code>from flask import Flask,url_for
+from markupsafe import escape
+
+
+app = Flask(__name__)
+print (__name__)
+
+
+@app.route('/')
+def index():
+    return 'Index Page'
+
+@app.route('/hello')
+def hello():
+    return 'Hello, World'
+
+@app.route('/user/&lt;username&gt;')
+def show_user_profile(username):
+    # show the user profile for that user
+    return 'Hellow User %s' % escape(username)
+
+@app.route('/post/&lt;int:post_id&gt;')
+def show_post(post_id):
+    # show the post with the given id, the id is an integer
+    return 'Post %d' % post_id
+
+@app.route('/path/&lt;path:subpath&gt;')
+def show_subpath(subpath):
+    # show the subpath after /path/
+    return 'Subpath %s' % escape(subpath)
+
+
+@app.route('/projects/')
+def projects():
+    return 'The project page'
+
+@app.route('/about')
+def about():
+    return 'The about page'
+
+with app.test_request_context():
+    print(url_for('index'))
+    print(url_for('hello'))
+    print(url_for('show_post', post_id='123'))
+    print(url_for('show_user_profile', username='John Doe'))
+</code></pre></div><p>运行结果：</p> <div class="language- extra-class"><pre class="language-text"><code>hellow
+/
+/hello
+/post/123
+/user/John%20Doe
+</code></pre></div><h2 id="http方法">HTTP方法</h2> <p>默认情况下，Flask路由仅响应GET请求。</p> <div class="language- extra-class"><pre class="language-text"><code>from flask import request
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        return do_the_login()
+    else:
+        return show_the_login_form()
+</code></pre></div><h2 id="错误页面编辑">错误页面编辑</h2> <div class="language- extra-class"><pre class="language-text"><code>@app.errorhandler(404)
+def page_not_found(error):
+    return 'This page does not exist', 404
+</code></pre></div></div> <footer><!----> <hr> <!----></footer></article> <div class="sticker vuepress-toc"><div class="vuepress-toc-item vuepress-toc-h2 active"><a href="#简介" title="简介">简介</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#依赖" title="依赖">依赖</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#python-pip3编译安装" title="python pip3编译安装">python pip3编译安装</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#构建开发环境" title="构建开发环境">构建开发环境</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#快速入门" title="快速入门">快速入门</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#flask之g对象" title="flask之g对象">flask之g对象</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#唯一url-重定向行为" title="唯一URL /重定向行为">唯一URL /重定向行为</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#url-for" title="url_for">url_for</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#http方法" title="HTTP方法">HTTP方法</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#错误页面编辑" title="错误页面编辑">错误页面编辑</a></div></div></div></div> <footer class="footer" data-v-fdbf4940><div class="footer-left-wrap" data-v-fdbf4940><ul class="contact" data-v-fdbf4940></ul></div> <div class="footer-right-wrap" data-v-fdbf4940><ul class="copyright" data-v-fdbf4940></ul></div></footer></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.1cdf4e16.js" defer></script><script src="/assets/js/6.827eb7e7.js" defer></script><script src="/assets/js/3.7a77b099.js" defer></script><script src="/assets/js/22.a3cb521d.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Genymotion | MrZhouBlog</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    
+    <meta name="description" content="
+获取IMEI imei.py
+一款基于genymotion的安卓模拟器的python调用，操作方法。本文介绍了使用adb调用，对apk进行安装，启动，卸载，并且实现了模拟器的IMEI和AndroidID的自动获取和修改。每次启动apk时，模拟器的IMEI和AndroidID都已被修改，模拟新终端用户下载和登陆app。
+#!/usr/bin/python
+-*- coding: ...">
+    <link rel="preload" href="/assets/css/0.styles.b49f391b.css" as="style"><link rel="preload" href="/assets/js/app.1cdf4e16.js" as="script"><link rel="preload" href="/assets/js/6.827eb7e7.js" as="script"><link rel="preload" href="/assets/js/3.7a77b099.js" as="script"><link rel="preload" href="/assets/js/13.888b19c8.js" as="script"><link rel="prefetch" href="/assets/js/10.41ac0210.js"><link rel="prefetch" href="/assets/js/11.8c04e0c4.js"><link rel="prefetch" href="/assets/js/12.f544a701.js"><link rel="prefetch" href="/assets/js/14.cd9af50d.js"><link rel="prefetch" href="/assets/js/15.f90da16c.js"><link rel="prefetch" href="/assets/js/16.bb43e446.js"><link rel="prefetch" href="/assets/js/17.769ead98.js"><link rel="prefetch" href="/assets/js/18.18926561.js"><link rel="prefetch" href="/assets/js/19.d74f3a55.js"><link rel="prefetch" href="/assets/js/20.07b09e6d.js"><link rel="prefetch" href="/assets/js/21.b63db52c.js"><link rel="prefetch" href="/assets/js/22.a3cb521d.js"><link rel="prefetch" href="/assets/js/23.03740915.js"><link rel="prefetch" href="/assets/js/24.c20f7419.js"><link rel="prefetch" href="/assets/js/25.e7577906.js"><link rel="prefetch" href="/assets/js/26.2e73e732.js"><link rel="prefetch" href="/assets/js/27.7f4d4b9c.js"><link rel="prefetch" href="/assets/js/4.12b2ac04.js"><link rel="prefetch" href="/assets/js/5.9435690e.js"><link rel="prefetch" href="/assets/js/7.c2bcb612.js"><link rel="prefetch" href="/assets/js/8.ddca3970.js"><link rel="prefetch" href="/assets/js/9.4817e529.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.28069103.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b49f391b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuepress-theme-blog__global-layout"><section id="header-wrapper"><header id="header"><div class="header-wrapper"><div class="title"><a href="/" class="nav-link home-link">MrZhouBlog </a></div> <div class="header-right-wrap"><ul class="nav"><li class="nav-item"><a href="/" class="nav-link">Blog</a></li><li class="nav-item"><a href="http://localhost:5000" target="_blank" rel="noopener noreferrer" class="nav-link external">New</a></li><li class="nav-item"><a href="/2020/09/15/posts/" class="nav-link">Workspace</a></li></ul> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></div></header></section> <div id="mobile-header"><div class="mobile-header-bar"><div class="mobile-header-title"><a href="/" class="nav-link mobile-home-link">MrZhouBlog </a> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></div> <div class="mobile-menu-wrapper"><hr class="menu-divider"> <ul class="mobile-nav"><li class="mobile-nav-item"><a href="/" class="nav-link">Blog</a></li><li class="mobile-nav-item"><a href="http://localhost:5000" target="_blank" rel="noopener noreferrer" class="nav-link external">New</a></li><li class="mobile-nav-item"><a href="/2020/09/15/posts/" class="nav-link">Workspace</a></li> <li class="mobile-nav-item"><!----></li></ul></div></div></div> <div class="content-wrapper"><div id="vuepress-theme-blog__post-layout"><article itemscope="itemscope" itemtype="https://schema.org/BlogPosting" class="vuepress-blog-theme-content"><header><h1 itemprop="name headline" class="post-title">
+        
+      </h1> <div class="post-meta"><div itemprop="publisher author" itemtype="http://schema.org/Person" itemscope="itemscope" class="post-meta-author"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-navigation"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg> <span itemprop="name">周先森</span> <span itemprop="address">   in SuZhou</span></div> <div class="post-meta-date"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> <time pubdate itemprop="datePublished" datetime="2020-07-23T00:00:00.000Z">
+      Thu Jul 23 2020
+    </time></div> <ul itemprop="keywords" class="post-meta-tags"><li class="post-tag" data-v-42ccfcd5><a href="/tag/genymotion" data-v-42ccfcd5><span data-v-42ccfcd5>genymotion</span></a></li><li class="post-tag" data-v-42ccfcd5><a href="/tag/python" data-v-42ccfcd5><span data-v-42ccfcd5>python</span></a></li></ul></div></header> <div itemprop="articleBody" class="content__default"><h1 id="genymotion">Genymotion</h1> <h2 id="获取imei-imei-py">获取IMEI imei.py</h2> <p>一款基于genymotion的安卓模拟器的python调用，操作方法。本文介绍了使用adb调用，对apk进行安装，启动，卸载，并且实现了模拟器的IMEI和AndroidID的自动获取和修改。每次启动apk时，模拟器的IMEI和AndroidID都已被修改，模拟新终端用户下载和登陆app。</p> <div class="language- extra-class"><pre class="language-text"><code>#!/usr/bin/python 
+# -*- coding: UTF-8 -*- 
+import random,os
+
+def genImeiLuhn(digits14): 
+    digit15=0 
+    for num in range(14): 
+        if num%2==0: 
+            digit15=digit15+int(digits14[num]) 
+        else: 
+            digit15=digit15+(int(digits14[num])*2)%10+(int(digits14[num])*2)/10 
+    digit15=int(digit15)%10 
+    # 组装14位数字+生成的1位
+    # 第四部分 CD，Check Digit，验证码，由前14位数字通过 Luhn算法计算得出。
+    if digit15==0: 
+        digits14=digits14+str(digit15) 
+    else: 
+        digits14=digits14+str(10-digit15) 
+    return digits14 
+# 批量
+def genMassImei(amount,filepath): 
+    fo=open(filepath,&quot;wb&quot;) 
+    for num in range(amount): 
+        stat14digits=genRandomNumer(14)
+        imei=genImeiLuhn(stat14digits) 
+        fo.write(imei+&quot;\r\n&quot;) 
+        print imei
+    fo.flush() 
+    fo.close()
+# 单个
+def genMassImei_one(): 
+    stat14digits=genRandomNumer(14)
+    imei=genImeiLuhn(stat14digits)
+    # print imei 
+    return imei
+    
+
+def genRandomNumer(Num):
+    number=''.join(str(random.choice(range(10))) for _ in range(Num))
+    return number
+
+if __name__ == '__main__':   
+    # genMassImei(100,&quot;imei2.txt&quot;)
+    genMassImei_one
+    print genMassImei_one()
+</code></pre></div><h2 id="获取androidid-androidid-py">获取AndroidID androidID.py</h2> <div class="language- extra-class"><pre class="language-text"><code>#!/usr/bin/env python
+#-*- coding:utf-8 -*-
+import  hashlib,binascii,random
+
+def sha1_hash(data):
+    '''
+    param input type: str
+    param output type: bytes
+    '''
+    return hashlib.sha1(data.encode('ascii')).digest()
+
+def generate_device_id(steamid_sha1_hash):
+    '''
+    param input type: bytes
+    param output type: str
+    '''
+    h = binascii.hexlify(steamid_sha1_hash).decode('ascii')      #码流转换
+    return &quot;%s%s%s&quot; % (h[:8], h[8:12], h[12:16])    
+
+if __name__==&quot;__main__&quot;:
+    steamid_sha1_hash = sha1_hash(&quot;123123312312312&quot;)
+    # print(steamid_sha1_hash)
+    deviceid = generate_device_id(steamid_sha1_hash)
+    print(deviceid)
+</code></pre></div><h2 id="辅助功能-localtime-py">辅助功能 localtime.py</h2> <div class="language- extra-class"><pre class="language-text"><code>import datetime
+def getYesterday(): 
+    today=datetime.date.today() 
+    oneday=datetime.timedelta(days=1) 
+    yesterday=today-oneday  
+    return yesterday
+
+if __name__==&quot;__main__&quot;:
+    print getYesterday()
+</code></pre></div><h2 id="执行脚本-processgenymotion-py">执行脚本 processGenymotion.py</h2> <div class="language- extra-class"><pre class="language-text"><code>#!/usr/bin/python 
+# -*- coding: UTF-8 -*- 
+import os,time,random,sys
+from imei import genMassImei_one
+from androidID import sha1_hash,generate_device_id
+
+def startGenymotion(Name):
+    Bool=os.popen(&quot;ps -ef|grep %s|grep player|grep -v grep|wc -l&quot; % (Name)).readlines()[0]
+    if Bool[0]=='0':
+        os.system(&quot;nohup /opt/genymobile/genymotion/player --vm-name %s &gt;/dev/null 2&gt;&amp;1 &amp;&quot; % (Name))
+        time.sleep(30)
+    else:
+        print(&quot;the virtual box %s is still alive&quot; % (Name))
+        pass
+
+def genymotionShell(Imei,androidID):
+    GENYMOTION_ID=os.popen(&quot;/opt/genymobile/genymotion/tools/adb  devices|grep -n 5555|awk -F: '{print $2}'|head -n 2|awk END'{print}'&quot;).readlines()[0].replace(&quot;\n&quot;,&quot;&quot;)
+    os.system(&quot;timeout 5 /opt/genymobile/genymotion/tools/adb -s %s:5555 shell settings put secure android_id %s&quot; % (GENYMOTION_ID,androidID))
+    os.system(&quot;timeout 5 /opt/genymobile/genymotion/tools/adb -s %s:5555 shell setprop persist.gsm.imei %s&quot; % (GENYMOTION_ID,Imei))
+    os.system(&quot;timeout 5 /opt/genymobile/genymotion/tools/adb -s %s:5555 shell setprop genymotion.device.id %s&quot; % (GENYMOTION_ID,Imei))
+    os.system(&quot;timeout 10 /opt/genymobile/genymotion/tools/adb -s %s:5555 install ~/genymotion_autostartapp/com.lf.ccdapp.apk&quot; % (GENYMOTION_ID))
+    time.sleep(3)
+    os.system(&quot;timeout 5 /opt/genymobile/genymotion/tools/adb -s %s:5555 shell am start -n com.lf.ccdapp/com.lf.ccdapp.model.login.activity.SplashActivity&quot; % (GENYMOTION_ID))
+    time.sleep(3)
+    os.system(&quot;timeout 5 /opt/genymobile/genymotion/tools/adb -s %s:5555 shell input tap 162 226&quot; % (GENYMOTION_ID))
+    # time.sleep(3)
+    # os.system(&quot;timeout 5 /opt/genymobile/genymotion/tools/adb -s %s:5555 shell shell am force-stop com.lf.ccdapp&quot; % (GENYMOTION_ID))
+    time.sleep(2)
+    os.system(&quot;timeout 5 /opt/genymobile/genymotion/tools/adb -s %s:5555 uninstall com.lf.ccdapp&quot; % (GENYMOTION_ID))
+
+def curlUrl(URL):
+    GENYMOTION_ID=os.popen(&quot;/opt/genymobile/genymotion/tools/adb  devices|grep -n 5555|awk -F: '{print $2}'|head -n 2|awk END'{print}'&quot;).readlines()[0].replace(&quot;\n&quot;,&quot;&quot;)
+    os.system(&quot;timeout 5 /opt/genymobile/genymotion/tools/adb -s %s:5555 shell setprop persist.gsm.imei %s&quot; % (GENYMOTION_ID,Imei))
+    os.system(&quot;timeout 5 /opt/genymobile/genymotion/tools/adb -s %s:5555 shell am start -a android.intent.action.VIEW -d %s&quot; % (GENYMOTION_ID,URL))
+    time.sleep(6)
+    os.system(&quot;timeout 5 /opt/genymobile/genymotion/tools/adb -s %s:5555 shell input tap 127 147&quot; % (GENYMOTION_ID))
+    WaitTime=random.randint(3,9)
+    print(&quot;wait time %s&quot; % (WaitTime))
+    time.sleep(WaitTime)
+    os.system(&quot;timeout 5 /opt/genymobile/genymotion/tools/adb -s %s:5555 shell am force-stop com.android.browser&quot; % (GENYMOTION_ID))
+
+if __name__==&quot;__main__&quot;:
+    # 获取数量在配置文件~/genymotion_autostartapp/bin/shualiang.conf
+    amount=os.popen(&quot;head -n `date +%d` ~/genymotion_autostartapp/bin/shualiang.conf|tail -n 1&quot;).readlines()[0]
+    # log日志文件配置
+    Time_day = time.strftime(&quot;%Y-%m-%d&quot;, time.localtime())
+    PWD=sys.path[0]
+    fo=open(PWD+&quot;/log/&quot;+Time_day+&quot;imei.log&quot;,&quot;ab&quot;) 
+
+    for num in range(int(amount)):
+        # 获取androidID
+        dg_number=str(random.randint(1,999999999))
+        steamid_sha1_hash = sha1_hash(dg_number)
+        # print(steamid_sha1_hash)
+        deviceid = generate_device_id(steamid_sha1_hash)
+        # 获取IMEI
+        Imei = genMassImei_one()
+        # 启动虚拟机
+        startGenymotion('ccd01')
+        # 执行流程
+        genymotionShell(Imei,deviceid)
+        # 写日志
+        Time = time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime())
+        fo.write(Time+&quot; IMEI: &quot;+Imei+ &quot; AndroidID &quot;+deviceid+&quot;\r\n&quot;)
+        fo.flush() 
+    fo.close()
+
+</code></pre></div></div> <footer><!----> <hr> <!----></footer></article> <div class="sticker vuepress-toc"><div class="vuepress-toc-item vuepress-toc-h2 active"><a href="#获取imei-imei-py" title="获取IMEI imei.py">获取IMEI imei.py</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#获取androidid-androidid-py" title="获取AndroidID androidID.py">获取AndroidID androidID.py</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#辅助功能-localtime-py" title="辅助功能 localtime.py">辅助功能 localtime.py</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#执行脚本-processgenymotion-py" title="执行脚本 processGenymotion.py">执行脚本 processGenymotion.py</a></div></div></div></div> <footer class="footer" data-v-fdbf4940><div class="footer-left-wrap" data-v-fdbf4940><ul class="contact" data-v-fdbf4940></ul></div> <div class="footer-right-wrap" data-v-fdbf4940><ul class="copyright" data-v-fdbf4940></ul></div></footer></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.1cdf4e16.js" defer></script><script src="/assets/js/6.827eb7e7.js" defer></script><script src="/assets/js/3.7a77b099.js" defer></script><script src="/assets/js/13.888b19c8.js" defer></script>
+  </body>
+</html>

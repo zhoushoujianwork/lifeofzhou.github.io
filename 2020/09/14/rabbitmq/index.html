@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>rabbitmq | MrZhouBlog</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    
+    <meta name="description" content="本文为作者个人整理，仅作参考,by Mr Zhou.
+rabbitmq
+1.rabbitmq 部署手册
+
+1.1环境准备
+ 下载erlang需要20版本以后的：
+`https://packages.erlang-solutions.com/erlang/rpm/centos/7/x8664/esl-erlang22. ...">
+    <link rel="preload" href="/assets/css/0.styles.b49f391b.css" as="style"><link rel="preload" href="/assets/js/app.1cdf4e16.js" as="script"><link rel="preload" href="/assets/js/6.827eb7e7.js" as="script"><link rel="preload" href="/assets/js/3.7a77b099.js" as="script"><link rel="preload" href="/assets/js/24.c20f7419.js" as="script"><link rel="prefetch" href="/assets/js/10.41ac0210.js"><link rel="prefetch" href="/assets/js/11.8c04e0c4.js"><link rel="prefetch" href="/assets/js/12.f544a701.js"><link rel="prefetch" href="/assets/js/13.888b19c8.js"><link rel="prefetch" href="/assets/js/14.cd9af50d.js"><link rel="prefetch" href="/assets/js/15.f90da16c.js"><link rel="prefetch" href="/assets/js/16.bb43e446.js"><link rel="prefetch" href="/assets/js/17.769ead98.js"><link rel="prefetch" href="/assets/js/18.18926561.js"><link rel="prefetch" href="/assets/js/19.d74f3a55.js"><link rel="prefetch" href="/assets/js/20.07b09e6d.js"><link rel="prefetch" href="/assets/js/21.b63db52c.js"><link rel="prefetch" href="/assets/js/22.a3cb521d.js"><link rel="prefetch" href="/assets/js/23.03740915.js"><link rel="prefetch" href="/assets/js/25.e7577906.js"><link rel="prefetch" href="/assets/js/26.2e73e732.js"><link rel="prefetch" href="/assets/js/27.7f4d4b9c.js"><link rel="prefetch" href="/assets/js/4.12b2ac04.js"><link rel="prefetch" href="/assets/js/5.9435690e.js"><link rel="prefetch" href="/assets/js/7.c2bcb612.js"><link rel="prefetch" href="/assets/js/8.ddca3970.js"><link rel="prefetch" href="/assets/js/9.4817e529.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.28069103.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b49f391b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuepress-theme-blog__global-layout"><section id="header-wrapper"><header id="header"><div class="header-wrapper"><div class="title"><a href="/" class="nav-link home-link">MrZhouBlog </a></div> <div class="header-right-wrap"><ul class="nav"><li class="nav-item"><a href="/" class="nav-link">Blog</a></li><li class="nav-item"><a href="http://localhost:5000" target="_blank" rel="noopener noreferrer" class="nav-link external">New</a></li><li class="nav-item"><a href="/2020/09/15/posts/" class="nav-link">Workspace</a></li></ul> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></div></header></section> <div id="mobile-header"><div class="mobile-header-bar"><div class="mobile-header-title"><a href="/" class="nav-link mobile-home-link">MrZhouBlog </a> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></div> <div class="mobile-menu-wrapper"><hr class="menu-divider"> <ul class="mobile-nav"><li class="mobile-nav-item"><a href="/" class="nav-link">Blog</a></li><li class="mobile-nav-item"><a href="http://localhost:5000" target="_blank" rel="noopener noreferrer" class="nav-link external">New</a></li><li class="mobile-nav-item"><a href="/2020/09/15/posts/" class="nav-link">Workspace</a></li> <li class="mobile-nav-item"><!----></li></ul></div></div></div> <div class="content-wrapper"><div id="vuepress-theme-blog__post-layout"><article itemscope="itemscope" itemtype="https://schema.org/BlogPosting" class="vuepress-blog-theme-content"><header><h1 itemprop="name headline" class="post-title">
+        rabbitmq
+      </h1> <div class="post-meta"><div itemprop="publisher author" itemtype="http://schema.org/Person" itemscope="itemscope" class="post-meta-author"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-navigation"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg> <span itemprop="name">周先森</span> <span itemprop="address">   in SuZhou</span></div> <div class="post-meta-date"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> <time pubdate itemprop="datePublished" datetime="2020-09-14T00:00:00.000Z">
+      Mon Sep 14 2020
+    </time></div> <ul itemprop="keywords" class="post-meta-tags"><li class="post-tag" data-v-42ccfcd5><a href="/tag/rabbitmq" data-v-42ccfcd5><span data-v-42ccfcd5>rabbitmq</span></a></li><li class="post-tag" data-v-42ccfcd5><a href="/tag/linux" data-v-42ccfcd5><span data-v-42ccfcd5>linux</span></a></li></ul></div></header> <div itemprop="articleBody" class="content__default"><p><strong>本文为作者个人整理，仅作参考,by Mr Zhou.</strong></p> <h1 id="rabbitmq">rabbitmq</h1> <h2 id="_1-rabbitmq-部署手册">1.rabbitmq 部署手册</h2> <p><img src="/img/rabbitmq01.png" alt=""></p> <h3 id="_1-1环境准备">1.1环境准备</h3> <ul><li>下载erlang需要20版本以后的：
+<code>https://packages.erlang-solutions.com/erlang/rpm/centos/7/x86_64/esl-erlang_22.0.7-1~centos~7_amd64.rpm</code></li> <li>下载rabbitmq-server:
+<code>wget https://www.rabbitmq.com/releases/rabbitmq-server/v3.6.0/rabbitmq-server-3.6.0-1.noarch.rpm</code>
+或者使用rabbitmq的yum源</li></ul> <div class="language- extra-class"><pre class="language-text"><code>[bintray-rabbitmq-server]
+name=bintray-rabbitmq-rpm
+baseurl=https://dl.bintray.com/rabbitmq/rpm/rabbitmq-server/v3.7.x/el/7/
+gpgcheck=0
+repo_gpgcheck=0
+enabled=1
+</code></pre></div><h3 id="_1-2安装">1.2安装</h3> <ul><li>配置开机启动服务；
+<code>systemctl enable rabbitmq-server.service</code></li> <li>启动服务</li></ul> <div class="language- extra-class"><pre class="language-text"><code>systemctl start rabbitmq-server.service
+rabbitmq-server -detached
+nohup rabbitmq-server start &amp;
+启动报错：ERROR: epmd error for host 80: badarg (unknown POSIX error)
+解决方案：echo &quot;NODENAME=rabbit@localhost&quot; &gt;&gt;/etc/rabbitmq/rabbitmq-env.conf 
+激活rabbitmq management界面
+
+参考 http://www.rabbitmq.com/management.html#configuration
+
+需要rabbitmq启动才能激活插件
+
+rabbitmq-plugins enable rabbitmq_management
+</code></pre></div><ul><li>添加管理员</li></ul> <p>参考 <code>https://segmentfault.com/a/1190000003720119</code></p> <div class="language- extra-class"><pre class="language-text"><code>rabbitmqctl add_user admin 123456
+
+rabbitmqctl set_user_tags admin administrator
+
+rabbitmqctl set_permissions -p / admin &quot;.&quot; &quot;.&quot; &quot;.*&quot;
+修改用户密码：
+rabbitmqctl change_password Username 'Newpassword'
+
+访问admin
+
+浏览器 http://IP:15672/
+
+admin/123456
+</code></pre></div><h2 id="_2-集群搭建手册">2 集群搭建手册</h2> <h3 id="_2-1-先搭cluster再搭ha">2.1 先搭cluster再搭HA；</h3> <p>根据搭建手册在另一台上也安装好rabbitmq-server，注意要启用web插件，否则会报错：<code>Node statistics not available;</code></p> <ul><li>配置相同的erlang.cookie；</li></ul> <div class="language- extra-class"><pre class="language-text"><code>scp /var/lib/rabbitmq/.erlang.cookie root@node2:/var/lib/rabbitmq
+chown rabbitmq:rabbitmq /var/lib/rabbitmq/.erlang.cookie
+</code></pre></div><ul><li>创建两个独立的broker</li></ul> <div class="language- extra-class"><pre class="language-text"><code>node1&gt; rabbitmq-server -detached
+
+node2&gt; rabbitmq-server -detached
+
+验证一下名字 rabbitmqctl cluster_status
+</code></pre></div><ul><li>在node1节点关闭当前rabbitmq服务</li></ul> <div class="language- extra-class"><pre class="language-text"><code>node1&gt; rabbitmqctl stop_app
+把node2中的集群加入到node1中
+node1&gt; rabbitmqctl join_cluster --ram rabbit@node2
+在node1上开启rabbitmq服务，查看集群状态
+[root@node1 ~]# rabbitmqctl start_app
+Starting node rabbit@node1 ...
+completed with 3 plugins.
+[root@node1 ~]# rabbitmqctl cluster_status
+Cluster status of node rabbit@node1 ...
+[{nodes,[{disc,[rabbit@node2]},{ram,[rabbit@node1]}]},
+{running_nodes,[rabbit@node2,rabbit@node1]},
+{cluster_name,&lt;&lt;&quot;rabbit@node2&quot;&gt;&gt;},
+{partitions,[]},
+{alarms,[{rabbit@node2,[]},{rabbit@node1,[]}]}]
+</code></pre></div><h3 id="_2-2-设置镜像队列数据的命令">2.2 设置镜像队列数据的命令：</h3> <p><code>rabbitmqctl set_policy -p / ha-allqueue &quot;^queue&quot; '{&quot;ha-mode&quot;:&quot;all&quot;}'</code>
+以后创建ha队列的时候需要指定参数；
+<img src="/img/rabbitmq02.png" alt=""></p> <h2 id="_3-删除节点">3 删除节点</h2> <ul><li>在被删除的节点上停止运行；
+<code>node5 # rabbitmqctl stop</code></li> <li>在主节点上删除操作；
+<code>node2 # rabbitmqctl -n rabbit@cddtestserver02 forget_cluster_node rabbit@productserver5</code> <img src="/img/rabbitmq03.png" alt=""></li></ul></div> <footer><!----> <hr> <!----></footer></article> <div class="sticker vuepress-toc"><div class="vuepress-toc-item vuepress-toc-h2 active"><a href="#_1-rabbitmq-部署手册" title="1.rabbitmq 部署手册">1.rabbitmq 部署手册</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_1-1环境准备" title="1.1环境准备">1.1环境准备</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_1-2安装" title="1.2安装">1.2安装</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#_2-集群搭建手册" title="2 集群搭建手册">2 集群搭建手册</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_2-1-先搭cluster再搭ha" title="2.1 先搭cluster再搭HA；">2.1 先搭cluster再搭HA；</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_2-2-设置镜像队列数据的命令" title="2.2 设置镜像队列数据的命令：">2.2 设置镜像队列数据的命令：</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#_3-删除节点" title="3 删除节点">3 删除节点</a></div></div></div></div> <footer class="footer" data-v-fdbf4940><div class="footer-left-wrap" data-v-fdbf4940><ul class="contact" data-v-fdbf4940></ul></div> <div class="footer-right-wrap" data-v-fdbf4940><ul class="copyright" data-v-fdbf4940></ul></div></footer></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.1cdf4e16.js" defer></script><script src="/assets/js/6.827eb7e7.js" defer></script><script src="/assets/js/3.7a77b099.js" defer></script><script src="/assets/js/24.c20f7419.js" defer></script>
+  </body>
+</html>

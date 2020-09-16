@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>celery 一款分布式任务系统 | MrZhouBlog</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    
+    <meta name="description" content="
+1.1 安装python组建
+使用清华源安装组建clerey
+pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
+pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+pip3 install redis c ...">
+    <link rel="preload" href="/assets/css/0.styles.b49f391b.css" as="style"><link rel="preload" href="/assets/js/app.1cdf4e16.js" as="script"><link rel="preload" href="/assets/js/6.827eb7e7.js" as="script"><link rel="preload" href="/assets/js/3.7a77b099.js" as="script"><link rel="preload" href="/assets/js/21.b63db52c.js" as="script"><link rel="prefetch" href="/assets/js/10.41ac0210.js"><link rel="prefetch" href="/assets/js/11.8c04e0c4.js"><link rel="prefetch" href="/assets/js/12.f544a701.js"><link rel="prefetch" href="/assets/js/13.888b19c8.js"><link rel="prefetch" href="/assets/js/14.cd9af50d.js"><link rel="prefetch" href="/assets/js/15.f90da16c.js"><link rel="prefetch" href="/assets/js/16.bb43e446.js"><link rel="prefetch" href="/assets/js/17.769ead98.js"><link rel="prefetch" href="/assets/js/18.18926561.js"><link rel="prefetch" href="/assets/js/19.d74f3a55.js"><link rel="prefetch" href="/assets/js/20.07b09e6d.js"><link rel="prefetch" href="/assets/js/22.a3cb521d.js"><link rel="prefetch" href="/assets/js/23.03740915.js"><link rel="prefetch" href="/assets/js/24.c20f7419.js"><link rel="prefetch" href="/assets/js/25.e7577906.js"><link rel="prefetch" href="/assets/js/26.2e73e732.js"><link rel="prefetch" href="/assets/js/27.7f4d4b9c.js"><link rel="prefetch" href="/assets/js/4.12b2ac04.js"><link rel="prefetch" href="/assets/js/5.9435690e.js"><link rel="prefetch" href="/assets/js/7.c2bcb612.js"><link rel="prefetch" href="/assets/js/8.ddca3970.js"><link rel="prefetch" href="/assets/js/9.4817e529.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.28069103.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b49f391b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuepress-theme-blog__global-layout"><section id="header-wrapper"><header id="header"><div class="header-wrapper"><div class="title"><a href="/" class="nav-link home-link">MrZhouBlog </a></div> <div class="header-right-wrap"><ul class="nav"><li class="nav-item"><a href="/" class="nav-link">Blog</a></li><li class="nav-item"><a href="http://localhost:5000" target="_blank" rel="noopener noreferrer" class="nav-link external">New</a></li><li class="nav-item"><a href="/2020/09/15/posts/" class="nav-link">Workspace</a></li></ul> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></div></header></section> <div id="mobile-header"><div class="mobile-header-bar"><div class="mobile-header-title"><a href="/" class="nav-link mobile-home-link">MrZhouBlog </a> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></div> <div class="mobile-menu-wrapper"><hr class="menu-divider"> <ul class="mobile-nav"><li class="mobile-nav-item"><a href="/" class="nav-link">Blog</a></li><li class="mobile-nav-item"><a href="http://localhost:5000" target="_blank" rel="noopener noreferrer" class="nav-link external">New</a></li><li class="mobile-nav-item"><a href="/2020/09/15/posts/" class="nav-link">Workspace</a></li> <li class="mobile-nav-item"><!----></li></ul></div></div></div> <div class="content-wrapper"><div id="vuepress-theme-blog__post-layout"><article itemscope="itemscope" itemtype="https://schema.org/BlogPosting" class="vuepress-blog-theme-content"><header><h1 itemprop="name headline" class="post-title">
+        celery 一款分布式任务系统
+      </h1> <div class="post-meta"><div itemprop="publisher author" itemtype="http://schema.org/Person" itemscope="itemscope" class="post-meta-author"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-navigation"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg> <span itemprop="name">Mr Zhou</span> <span itemprop="address">   in Taipei</span></div> <div class="post-meta-date"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> <time pubdate itemprop="datePublished" datetime="2020-08-31T00:00:00.000Z">
+      Mon Aug 31 2020
+    </time></div> <ul itemprop="keywords" class="post-meta-tags"><li class="post-tag" data-v-42ccfcd5><a href="/tag/python" data-v-42ccfcd5><span data-v-42ccfcd5>python</span></a></li><li class="post-tag" data-v-42ccfcd5><a href="/tag/celery" data-v-42ccfcd5><span data-v-42ccfcd5>celery</span></a></li></ul></div></header> <div itemprop="articleBody" class="content__default"><h2 id="一-安装">一. 安装</h2> <h3 id="_1-1-安装python组建">1.1 安装python组建</h3> <p>使用清华源安装组建<code>clerey</code></p> <div class="language- extra-class"><pre class="language-text"><code>pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
+pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+pip3 install redis celery
+</code></pre></div><h3 id="_1-2-选用消息中间件rabbitmq">1.2 选用消息中间件rabbitmq</h3> <p>目前支持的中间件有<code>RabbitMQ</code> <code>Redis</code>
+RabbitMQ 是默认的中间人（Broker），只需要配置连接的URL即可，不需要安装额外的的配置以及初始化配置信息</p> <div class="language- extra-class"><pre class="language-text"><code>broker_url = 'amqp://myuser:mypassword@localhost:5672/myvhost'
+</code></pre></div><h4 id="_1-2-1-使用docker方式安装">1.2.1 使用docker方式安装</h4> <div class="language- extra-class"><pre class="language-text"><code>docker run -d -p 5462:5462 -p 5672:5672 rabbitmq
+</code></pre></div><h4 id="_1-2-2-配置-rabbitmq">1.2.2 配置 RabbitMQ</h4> <p>要使用 Celery，需要创一个RabbitMQ账户：
+进入容器：</p> <div class="language- extra-class"><pre class="language-text"><code>docker exec -it charming_leakey bash
+</code></pre></div><p>执行以下命令：</p> <div class="language- extra-class"><pre class="language-text"><code>rabbitmqctl add_user celery celery123
+rabbitmqctl add_vhost localhost
+rabbitmqctl set_user_tags celery mytag
+rabbitmqctl set_permissions -p localhost celery &quot;.*&quot; &quot;.*&quot; &quot;.*&quot;
+</code></pre></div><p>rabbitmq 启动与停止</p> <div class="language- extra-class"><pre class="language-text"><code>rabbitmqctl-server
+# 也可以通过添加 -detached 参数在后台运行：
+rabbitmqctl-server -detached
+# 永远不要通过 kill 命令来进行停止 RabbitMQ 运行，使用 rabbitmqctl 命令来进行停止 RabbitMQ ：
+rabbitmqctl stop
+</code></pre></div><h3 id="_1-3-使用redis作为后端存储">1.3 使用redis作为后端存储</h3> <h4 id="_1-3-1-使用docker方式安装">1.3.1 使用docker方式安装</h4> <div class="language- extra-class"><pre class="language-text"><code>docker run -dit -p 6379:6379 --name redis redis
+</code></pre></div><h2 id="二-代码">二.代码</h2> <h3 id="_2-1-消息消费者">2.1 消息消费者</h3> <p>tasks.py</p> <div class="language- extra-class"><pre class="language-text"><code>import time
+from celery import Celery
+backend = 'redis://localhost/0'
+broker = 'amqp://celery:celery123@localhost//'
+
+app = Celery('tasks', broker=broker, backend=backend)
+
+@app.task
+def sendmail(name):
+    print(&quot;start send email to %s&quot; %(name))
+    time.sleep(1)
+    MSG = &quot;邮件发送成功！&quot;
+    print(MSG)
+    return MSG
+
+@app.task
+def sendmsg(name):
+    print(&quot;start send msg to %s&quot; %(name))
+    time.sleep(5)
+    MSG = &quot;短信发送完成！&quot;
+    print(MSG)
+    return MSG
+
+if __name__ == &quot;__main__&quot;:
+    pass
+</code></pre></div><p>运行消费者的后台程序</p> <div class="language- extra-class"><pre class="language-text"><code>$ celery worker -A tasks --loglevel=info
+ 
+ -------------- celery@zhou-PC v4.4.7 (cliffs)
+--- ***** ----- 
+-- ******* ---- Linux-5.3.0-3-amd64-x86_64-with-Deepin-20-apricot 2020-08-28 17:49:12
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .&gt; app:         tasks:0x7efdc3d4ea20
+- ** ---------- .&gt; transport:   amqp://celery:**@localhost:5672//
+- ** ---------- .&gt; results:     disabled://
+- *** --- * --- .&gt; concurrency: 4 (prefork)
+-- ******* ---- .&gt; task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .&gt; celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . tasks.sendmail
+  . tasks.sendmsg
+
+[2020-08-28 17:49:12,189: INFO/MainProcess] Connected to amqp://celery:**@127.0.0.1:5672//
+[2020-08-28 17:49:12,197: INFO/MainProcess] mingle: searching for neighbors
+[2020-08-28 17:49:13,315: INFO/MainProcess] mingle: all alone
+[2020-08-28 17:49:13,333: INFO/MainProcess] celery@zhou-PC ready.
+[2020-08-28 17:49:14,997: INFO/MainProcess] Received task: tasks.sendmail[0df3bf3d-48d9-4d0f-a48b-5d42efa1756f]  
+[2020-08-28 17:49:14,998: WARNING/ForkPoolWorker-3] start send email to 111
+[2020-08-28 17:49:14,998: INFO/MainProcess] Received task: tasks.sendmsg[68e3f2cf-54a3-49e0-b11a-ffe1ecbf66d1]  
+[2020-08-28 17:49:15,001: WARNING/ForkPoolWorker-2] start send msg to 2222
+[2020-08-28 17:49:16,005: WARNING/ForkPoolWorker-3] finished
+[2020-08-28 17:49:16,005: INFO/ForkPoolWorker-3] Task tasks.sendmail[0df3bf3d-48d9-4d0f-a48b-5d42efa1756f] succeeded in 1.0072376700118184s: 'ok'
+[2020-08-28 17:49:20,007: WARNING/ForkPoolWorker-2] finished22222222
+[2020-08-28 17:49:20,007: INFO/ForkPoolWorker-2] Task tasks.sendmsg[68e3f2cf-54a3-49e0-b11a-ffe1ecbf66d1] succeeded in 5.007500298030209s: 'ok'
+</code></pre></div><h3 id="_2-2-消息生产者">2.2 消息生产者</h3> <p>produce.py
+消息生产者会有唯一的ID值，可以通过该ID去后端存储结果中查询异步执行的结果。</p> <div class="language- extra-class"><pre class="language-text"><code>from tasks import sendmail,sendmsg
+
+sendmail.delay(&quot;短信验证码是 123456 请勿告诉其他人。&quot; )
+sendmsg.delay(&quot;邮箱码是：112&quot;)
+</code></pre></div><p>运行消息生产者程序<code>python3 produce.py</code>上面消费者后台程序能看到被消费执行的log</p> <h3 id="_2-3-取结果">2.3 取结果</h3> <p>result.py</p> <div class="language- extra-class"><pre class="language-text"><code>from celery.result import AsyncResult
+from tasks import app
+
+id = &quot;f64598a2-46f1-4b57-9c94-f5a792dcaf48&quot;
+async_result = AsyncResult(id=id, app=app)
+
+if async_result.successful():
+    result = async_result.get()
+    print(result)
+</code></pre></div><h2 id="三-拓扑">三. 拓扑</h2> <p><img src="/img/celery.png" alt="celery"></p> <h2 id="四-多目录结构">四. 多目录结构</h2> <p><a href="https://www.cnblogs.com/testzcy/p/13227036.html" target="_blank" rel="noopener noreferrer">cnblogs 参考<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language- extra-class"><pre class="language-text"><code>./
+├── celery_tasks
+│   ├── celery.py
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── task01.py
+│   └── task02.py
+├── __pycache__
+├── readme.md
+├── start_server.sh
+└── venv
+    ├── produce_task.py
+    └── result.py
+</code></pre></div><p>celery.py</p> <div class="language- extra-class"><pre class="language-text"><code>import time,redis
+from celery import Celery
+backend = 'redis://127.0.0.1/0'
+broker = 'amqp://celery:celery123@localhost//'
+
+app = Celery('tasks', 
+            broker=broker, 
+            backend=backend,
+            include=['celery_tasks.task01',
+                    'celery_tasks.task02'
+                    ]
+            )
+
+# 时区
+app.conf.timezone = 'Asia/Shanghai'
+# 是否使用UTC
+app.conf.enable_utc = False
+</code></pre></div><p>task01.py</p> <div class="language- extra-class"><pre class="language-text"><code>import time
+from celery_tasks.celery import app
+
+@app.task
+def sendmail(name):
+    print(&quot;start send email to %s&quot; %(name))
+    time.sleep(1)
+    MSG = &quot;邮件发送成功！&quot;
+    print(MSG)
+    return MSG
+</code></pre></div><p>task02.py</p> <div class="language- extra-class"><pre class="language-text"><code>import time
+from celery_tasks.celery import app
+
+@app.task
+def sendmsg(name):
+    print(&quot;start send msg to %s&quot; %(name))
+    time.sleep(5)
+    MSG = &quot;短信发送完成！&quot;
+    print(MSG)
+    return MSG
+</code></pre></div><p>produce_task.py</p> <div class="language- extra-class"><pre class="language-text"><code>import sys
+sys.path.append(&quot;../&quot;)
+from celery_tasks.task01 import sendmail
+from celery_tasks.task02 import sendmsg
+
+result = sendmail.delay(&quot;短信验证码是 123456 请勿告诉其他人。&quot; )
+print (result.id)
+result = sendmsg.delay(&quot;邮箱码是：112&quot;)
+print (result.id)
+</code></pre></div><p>result.py</p> <div class="language- extra-class"><pre class="language-text"><code>import sys
+sys.path.append(&quot;../&quot;)
+from celery.result import AsyncResult
+from celery_tasks.celery import app
+
+id = &quot;330b3533-3ade-480b-b355-bf75fba64bf3&quot;
+async_result = AsyncResult(id=id, app=app)
+
+if async_result.successful():
+    result = async_result.get()
+    print(result)
+</code></pre></div></div> <footer><!----> <hr> <!----></footer></article> <div class="sticker vuepress-toc"><div class="vuepress-toc-item vuepress-toc-h2 active"><a href="#一-安装" title="一. 安装">一. 安装</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_1-1-安装python组建" title="1.1 安装python组建">1.1 安装python组建</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_1-2-选用消息中间件rabbitmq" title="1.2 选用消息中间件rabbitmq">1.2 选用消息中间件rabbitmq</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_1-3-使用redis作为后端存储" title="1.3 使用redis作为后端存储">1.3 使用redis作为后端存储</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#二-代码" title="二.代码">二.代码</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_2-1-消息消费者" title="2.1 消息消费者">2.1 消息消费者</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_2-2-消息生产者" title="2.2 消息生产者">2.2 消息生产者</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_2-3-取结果" title="2.3 取结果">2.3 取结果</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#三-拓扑" title="三. 拓扑">三. 拓扑</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#四-多目录结构" title="四. 多目录结构">四. 多目录结构</a></div></div></div></div> <footer class="footer" data-v-fdbf4940><div class="footer-left-wrap" data-v-fdbf4940><ul class="contact" data-v-fdbf4940></ul></div> <div class="footer-right-wrap" data-v-fdbf4940><ul class="copyright" data-v-fdbf4940></ul></div></footer></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.1cdf4e16.js" defer></script><script src="/assets/js/6.827eb7e7.js" defer></script><script src="/assets/js/3.7a77b099.js" defer></script><script src="/assets/js/21.b63db52c.js" defer></script>
+  </body>
+</html>

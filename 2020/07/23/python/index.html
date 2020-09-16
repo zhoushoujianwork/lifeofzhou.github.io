@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Python | MrZhouBlog</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    
+    <meta name="description" content="
+get_file
+
+def getfile(rootpath, all_files={}):
+    '''
+    递归函数，遍历该文档目录和子目录下的所有文件，获取其path
+    '''
+    pwd = sys.path[0]
+    rootpath = pwd+'/'+rootpath
+    files = os.listdir(root_path)
+ ...">
+    <link rel="preload" href="/assets/css/0.styles.b49f391b.css" as="style"><link rel="preload" href="/assets/js/app.1cdf4e16.js" as="script"><link rel="preload" href="/assets/js/6.827eb7e7.js" as="script"><link rel="preload" href="/assets/js/3.7a77b099.js" as="script"><link rel="preload" href="/assets/js/23.03740915.js" as="script"><link rel="prefetch" href="/assets/js/10.41ac0210.js"><link rel="prefetch" href="/assets/js/11.8c04e0c4.js"><link rel="prefetch" href="/assets/js/12.f544a701.js"><link rel="prefetch" href="/assets/js/13.888b19c8.js"><link rel="prefetch" href="/assets/js/14.cd9af50d.js"><link rel="prefetch" href="/assets/js/15.f90da16c.js"><link rel="prefetch" href="/assets/js/16.bb43e446.js"><link rel="prefetch" href="/assets/js/17.769ead98.js"><link rel="prefetch" href="/assets/js/18.18926561.js"><link rel="prefetch" href="/assets/js/19.d74f3a55.js"><link rel="prefetch" href="/assets/js/20.07b09e6d.js"><link rel="prefetch" href="/assets/js/21.b63db52c.js"><link rel="prefetch" href="/assets/js/22.a3cb521d.js"><link rel="prefetch" href="/assets/js/24.c20f7419.js"><link rel="prefetch" href="/assets/js/25.e7577906.js"><link rel="prefetch" href="/assets/js/26.2e73e732.js"><link rel="prefetch" href="/assets/js/27.7f4d4b9c.js"><link rel="prefetch" href="/assets/js/4.12b2ac04.js"><link rel="prefetch" href="/assets/js/5.9435690e.js"><link rel="prefetch" href="/assets/js/7.c2bcb612.js"><link rel="prefetch" href="/assets/js/8.ddca3970.js"><link rel="prefetch" href="/assets/js/9.4817e529.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.28069103.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b49f391b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuepress-theme-blog__global-layout"><section id="header-wrapper"><header id="header"><div class="header-wrapper"><div class="title"><a href="/" class="nav-link home-link">MrZhouBlog </a></div> <div class="header-right-wrap"><ul class="nav"><li class="nav-item"><a href="/" class="nav-link">Blog</a></li><li class="nav-item"><a href="http://localhost:5000" target="_blank" rel="noopener noreferrer" class="nav-link external">New</a></li><li class="nav-item"><a href="/2020/09/15/posts/" class="nav-link">Workspace</a></li></ul> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></div></header></section> <div id="mobile-header"><div class="mobile-header-bar"><div class="mobile-header-title"><a href="/" class="nav-link mobile-home-link">MrZhouBlog </a> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></div> <div class="mobile-menu-wrapper"><hr class="menu-divider"> <ul class="mobile-nav"><li class="mobile-nav-item"><a href="/" class="nav-link">Blog</a></li><li class="mobile-nav-item"><a href="http://localhost:5000" target="_blank" rel="noopener noreferrer" class="nav-link external">New</a></li><li class="mobile-nav-item"><a href="/2020/09/15/posts/" class="nav-link">Workspace</a></li> <li class="mobile-nav-item"><!----></li></ul></div></div></div> <div class="content-wrapper"><div id="vuepress-theme-blog__post-layout"><article itemscope="itemscope" itemtype="https://schema.org/BlogPosting" class="vuepress-blog-theme-content"><header><h1 itemprop="name headline" class="post-title">
+        
+      </h1> <div class="post-meta"><div itemprop="publisher author" itemtype="http://schema.org/Person" itemscope="itemscope" class="post-meta-author"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-navigation"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg> <span itemprop="name">周先森</span> <span itemprop="address">   in SuZhou</span></div> <div class="post-meta-date"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> <time pubdate itemprop="datePublished" datetime="2020-07-23T00:00:00.000Z">
+      Thu Jul 23 2020
+    </time></div> <ul itemprop="keywords" class="post-meta-tags"><li class="post-tag" data-v-42ccfcd5><a href="/tag/gitlab" data-v-42ccfcd5><span data-v-42ccfcd5>gitlab</span></a></li><li class="post-tag" data-v-42ccfcd5><a href="/tag/python" data-v-42ccfcd5><span data-v-42ccfcd5>python</span></a></li></ul></div></header> <div itemprop="articleBody" class="content__default"><h1 id="python">Python</h1> <h2 id="get-file">get_file</h2> <div class="language- extra-class"><pre class="language-text"><code>def get_file(root_path, all_files={}):
+    '''
+    递归函数，遍历该文档目录和子目录下的所有文件，获取其path
+    '''
+    pwd = sys.path[0]
+    root_path = pwd+'/'+root_path
+    files = os.listdir(root_path)
+    for file in files:
+        if not os.path.isdir(root_path + '/' + file):   # not a dir
+            all_files[file] = root_path + '/' + file
+        else:  # is a dir
+            get_file((root_path+'/'+file), all_files)
+    return all_files
+
+if __name__ == &quot;__main__&quot;:
+    FileList = get_file('taskdir')
+    for v,k in FileList.items():
+                print('filename:{v} pwd:{k}'.format(v = v, k = k))
+                # print('filename:%s pwd:%s' %(v,k))
+</code></pre></div><h2 id="子进程运行">子进程运行</h2> <h2 id="python自动拉取gitlab项目备份">python自动拉取gitlab项目备份</h2> <ul><li>环境：python2.7</li> <li>依赖：python-gitlab (注意不是gitlab)</li></ul> <div class="language- extra-class"><pre class="language-text"><code>#!/usr/bin/env python
+# coding=utf-8
+import gitlab,commands,time
+url=&quot;http://47.114.91.163/&quot;
+token=&quot;v5m_jPhh6djoa_wLZzqF&quot;
+gl = gitlab.Gitlab(url,token)
+projects = gl.projects.list(page=2,per_page=20)
+List=[]
+Time=time.strftime(&quot;%Y-%m-%d&quot;, time.localtime())
+BackDir='/home/zhou/ctd/Git/%s' % (Time)
+(k,v)=commands.getstatusoutput(&quot;mkdir -p %s&quot; % (BackDir))
+Deleteday3=&quot;find %s -type f -ctime +3 | xargs rm -rf&quot; % (BackDir)
+(k,v)=commands.getstatusoutput(Deleteday3)
+for p in projects:
+    List.append(p.http_url_to_repo)
+    # print List
+for i in List:
+    i=i.replace('172.19.0.39/','47.114.91.163/')
+    i=i.replace('git@','http://root:12345678@')
+    # print i
+    comm=&quot;cd %s &amp;&amp; git clone  %s&quot; % (BackDir,i)
+    (k,v)=commands.getstatusoutput(comm)
+    print k,v
+
+</code></pre></div><h2 id="logging-模块">logging 模块</h2> <h3 id="日志模式">日志模式</h3> <table><thead><tr><th>字符</th> <th>含义</th></tr></thead> <tbody><tr><td>'r'</td> <td>读取（默认）</td></tr> <tr><td>'w'</td> <td>写入，并先截断文件</td></tr> <tr><td>'x'</td> <td>排它性创建，如果文件已存在则失败</td></tr> <tr><td>'a'</td> <td>写入，如果文件存在则在末尾追加</td></tr> <tr><td>'b'</td> <td>二进制模式</td></tr> <tr><td>'t'</td> <td>文本模式（默认）</td></tr> <tr><td>'+'</td> <td>更新磁盘文件（读取并写入）</td></tr></tbody></table> <h3 id="_1、日志级别">1、日志级别</h3> <div class="language- extra-class"><pre class="language-text"><code>import logging  # 引入logging模块
+# 将信息打印到控制台上
+logging.debug(u&quot;苍井空&quot;)
+logging.info(u&quot;麻生希&quot;)
+logging.warning(u&quot;小泽玛利亚&quot;)
+logging.error(u&quot;桃谷绘里香&quot;)
+logging.critical(u&quot;泷泽萝拉&quot;)
+</code></pre></div><p>上面可以看到只有后面三个能打印出来</p> <p>默认生成的root logger的level是logging.WARNING,低于该级别的就不输出了</p> <p>级别排序:<code>CRITICAL</code> &gt; <code>ERROR</code> &gt; <code>WARNING</code> &gt; <code>INFO</code> &gt; <code>DEBUG</code></p> <ul><li><p>debug : 打印全部的日志,详细的信息,通常只出现在诊断问题上</p></li> <li><p>info : 打印info,warning,error,critical级别的日志,确认一切按预期运行</p></li> <li><p>warning : 打印warning,error,critical级别的日志,一个迹象表明,一些意想不到的事情发生了,或表明一些问题在不久的将来(例如。磁盘空间低”),这个软件还能按预期工作</p></li> <li><p>error : 打印error,critical级别的日志,更严重的问题,软件没能执行一些功能</p></li> <li><p>critical : 打印critical级别,一个严重的错误,这表明程序本身可能无法继续运行</p></li></ul> <p>这时候，如果需要显示低于WARNING级别的内容，可以引入NOTSET级别来显示：</p> <div class="language- extra-class"><pre class="language-text"><code>import logging  # 引入logging模块
+logging.basicConfig(level=logging.NOTSET)  # 设置日志级别
+logging.debug(u&quot;如果设置了日志级别为NOTSET,那么这里可以采取debug、info的级别的内容也可以显示在控制台上了&quot;)
+</code></pre></div><h3 id="_2、部分名词解释">2、部分名词解释</h3> <p>Logging.Formatter：这个类配置了日志的格式，在里面自定义设置日期和时间，输出日志的时候将会按照设置的格式显示内容。
+Logging.Logger：Logger是Logging模块的主体，进行以下三项工作：</p> <ol><li>为程序提供记录日志的接口</li> <li>判断日志所处级别，并判断是否要过滤</li> <li>根据其日志级别将该条日志分发给不同handler</li></ol> <h4 id="常用函数有">常用函数有：</h4> <ul><li>Logger.setLevel() 设置日志级别</li> <li>Logger.addHandler() 和 Logger.removeHandler() 添加和删除一个Handler</li> <li>Logger.addFilter() 添加一个Filter,过滤作用</li> <li>Logging.Handler：Handler基于日志级别对日志进行分发，如设置为WARNING级别的Handler只会处理WARNING及以上级别的日志。</li> <li>setLevel() 设置级别</li> <li>setFormatter() 设置Formatter</li></ul> <h3 id="_3、日志输出-控制台">3、日志输出-控制台</h3> <div class="language- extra-class"><pre class="language-text"><code>import logging  # 引入logging模块
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s')  # logging.basicConfig函数对日志的输出格式及方式做相关配置
+# 由于日志基本配置中级别设置为DEBUG，所以一下打印信息将会全部显示在控制台上
+logging.info('this is a loggging info message')
+logging.debug('this is a loggging debug message')
+logging.warning('this is loggging a warning message')
+logging.error('this is an loggging error message')
+logging.critical('this is a loggging critical message')
+</code></pre></div><p>上面代码通过<code>logging.basicConfig</code>函数进行配置了日志级别和日志内容输出格式；因为级别为<code>DEBUG</code>，所以会将<code>DEBUG</code>级别以上的信息都输出显示再控制台上。</p> <h3 id="_4、日志输出-文件">4、日志输出-文件</h3> <div class="language- extra-class"><pre class="language-text"><code>import logging  # 引入logging模块
+import os.path
+import time
+# 第一步，创建一个logger
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)  # Log等级总开关
+# 第二步，创建一个handler，用于写入日志文件
+rq = time.strftime('%Y%m%d%H%M', time.localtime(time.time()))
+log_path = os.path.dirname(os.getcwd()) + '/Logs/'
+log_name = log_path + rq + '.log'
+logfile = log_name
+fh = logging.FileHandler(logfile, mode='w')
+fh.setLevel(logging.DEBUG)  # 输出到file的log等级的开关
+# 第三步，定义handler的输出格式
+formatter = logging.Formatter(&quot;%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s&quot;)
+fh.setFormatter(formatter)
+# 第四步，将logger添加到handler里面
+logger.addHandler(fh)
+# 日志
+logger.debug('this is a logger debug message')
+logger.info('this is a logger info message')
+logger.warning('this is a logger warning message')
+logger.error('this is a logger error message')
+logger.critical('this is a logger critical message')
+</code></pre></div><h3 id="_5、日志输出-控制台和文件">5、日志输出-控制台和文件</h3> <div class="language- extra-class"><pre class="language-text"><code>只要在输入到日志中的第二步和第三步插入一个handler输出到控制台：
+创建一个handler，用于输出到控制台
+ch = logging.StreamHandler()
+ch.setLevel(logging.WARNING)  # 输出到console的log等级的开关
+第四步和第五步分别加入以下代码即可
+ch.setFormatter(formatter)
+logger.addHandler(ch)
+</code></pre></div><h3 id="_6、format常用格式说明">6、format常用格式说明</h3> <div class="language- extra-class"><pre class="language-text"><code> - %(levelno)s:     打印日志级别的数值
+ - %(levelname)s:   打印日志级别名称
+ - %(pathname)s:    打印当前执行程序的路径，其实就是sys.argv[0]
+ - %(filename)s:    打印当前执行程序名
+ - %(funcName)s:    打印日志的当前函数
+ - %(lineno)d:      打印日志的当前行号
+ - %(asctime)s:     打印日志的时间
+ - %(thread)d:      打印线程ID
+ - %(threadName)s:  打印线程名称
+ - %(process)d:     打印进程ID
+ - %(message)s:     打印日志信息
+</code></pre></div><h3 id="_7、捕捉异常-用traceback记录">7、捕捉异常,用traceback记录</h3> <div class="language- extra-class"><pre class="language-text"><code>import os.path
+import time
+import logging
+# 创建一个logger
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)  # Log等级总开关
+
+# 创建一个handler，用于写入日志文件
+rq = time.strftime('%Y%m%d%H%M', time.localtime(time.time()))
+log_path = os.path.dirname(os.getcwd()) + '/Logs/'
+log_name = log_path + rq + '.log'
+logfile = log_name
+fh = logging.FileHandler(logfile, mode='w')
+fh.setLevel(logging.DEBUG)  # 输出到file的log等级的开关
+
+# 定义handler的输出格式
+formatter = logging.Formatter(&quot;%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s&quot;)
+fh.setFormatter(formatter)
+logger.addHandler(fh)
+# 使用logger.XX来记录错误,这里的&quot;error&quot;可以根据所需要的级别进行修改
+try:
+    open('/path/to/does/not/exist', 'rb')
+except (SystemExit, KeyboardInterrupt):
+    raise
+except Exception, e:
+    logger.error('Failed to open file', exc_info=True)
+</code></pre></div><h3 id="_8、多模块调用logging-日志输出顺序">8、多模块调用logging,日志输出顺序</h3> <p><code>warning_output.py</code></p> <div class="language- extra-class"><pre class="language-text"><code>import logging
+def write_warning():
+    logging.warning(u&quot;记录文件warning_output.py的日志&quot;)
+error_output.py
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>import logging
+def write_error():
+    logging.error(u&quot;记录文件error_output.py的日志&quot;)
+
+</code></pre></div><p><code>main.py</code></p> <div class="language- extra-class"><pre class="language-text"><code>
+import logging
+import warning_output
+import error_output
+
+def write_critical():
+    logging.critical(u&quot;记录文件main.py的日志&quot;)
+
+warning_output.write_warning()  # 调用warning_output文件中write_warning方法
+write_critical()
+error_output.write_error()  # 调用error_output文件中write_error方法
+</code></pre></div><h3 id="_9、日志滚动和过期删除-按时间">9、日志滚动和过期删除(按时间）</h3> <div class="language- extra-class"><pre class="language-text"><code># coding:utf-8
+import logging
+import time
+import re
+from logging.handlers import TimedRotatingFileHandler
+from logging.handlers import RotatingFileHandler
+
+
+def backroll():
+    #日志打印格式
+    log_fmt = '%(asctime)s\tFile \&quot;%(filename)s\&quot;,line %(lineno)s\t%(levelname)s: %(message)s'
+    formatter = logging.Formatter(log_fmt)
+    #创建TimedRotatingFileHandler对象
+    log_file_handler = TimedRotatingFileHandler(filename=&quot;ds_update&quot;, when=&quot;M&quot;, interval=2, backupCount=2)
+    #log_file_handler.suffix = &quot;%Y-%m-%d_%H-%M.log&quot;
+    #log_file_handler.extMatch = re.compile(r&quot;^\d{4}-\d{2}-\d{2}_\d{2}-\d{2}.log$&quot;)
+    log_file_handler.setFormatter(formatter)
+    logging.basicConfig(level=logging.INFO)
+    log = logging.getLogger()
+    log.addHandler(log_file_handler)
+    #循环打印日志
+    log_content = &quot;test log&quot;
+    count = 0
+    while count &lt; 30:
+        log.error(log_content)
+        time.sleep(20)
+        count = count + 1
+    log.removeHandler(log_file_handler)
+
+
+if __name__ == &quot;__main__&quot;:
+    backroll()
+</code></pre></div><p>filename：日志文件名的prefix；</p> <p>when：是一个字符串，用于描述滚动周期的基本单位，字符串的值及意义如下：</p> <ul><li>“S”: Seconds</li> <li>“M”: Minutes</li> <li>“H”: Hours</li> <li>“D”: Days</li> <li>“W”: Week day (0=Monday)</li> <li>“midnight”: Roll over at midnight</li></ul> <p>interval: 滚动周期，单位有when指定，比如：when=’D’,interval=1，表示每天产生一个日志文件</p> <p>backupCount: 表示日志文件的保留个数</p> <hr> <p>本文摘录：
+https://blog.csdn.net/ACK_ACK/article/details/87884607</p> <h2 id="python-捕捉ctrl-c异常方法">python 捕捉ctrl+c异常方法</h2> <div class="language- extra-class"><pre class="language-text"><code>import sys
+
+try:
+    # 运行
+except KeyboardInterrupt:
+    # 结束
+    sys.exit()
+</code></pre></div></div> <footer><!----> <hr> <!----></footer></article> <div class="sticker vuepress-toc"><div class="vuepress-toc-item vuepress-toc-h2 active"><a href="#get-file" title="get_file">get_file</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#子进程运行" title="子进程运行">子进程运行</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#python自动拉取gitlab项目备份" title="python自动拉取gitlab项目备份">python自动拉取gitlab项目备份</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#logging-模块" title="logging 模块">logging 模块</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#日志模式" title="日志模式">日志模式</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_1、日志级别" title="1、日志级别">1、日志级别</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_2、部分名词解释" title="2、部分名词解释">2、部分名词解释</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_3、日志输出-控制台" title="3、日志输出-控制台">3、日志输出-控制台</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_4、日志输出-文件" title="4、日志输出-文件">4、日志输出-文件</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_5、日志输出-控制台和文件" title="5、日志输出-控制台和文件">5、日志输出-控制台和文件</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_6、format常用格式说明" title="6、format常用格式说明">6、format常用格式说明</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_7、捕捉异常-用traceback记录" title="7、捕捉异常,用traceback记录">7、捕捉异常,用traceback记录</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_8、多模块调用logging-日志输出顺序" title="8、多模块调用logging,日志输出顺序">8、多模块调用logging,日志输出顺序</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_9、日志滚动和过期删除-按时间" title="9、日志滚动和过期删除(按时间）">9、日志滚动和过期删除(按时间）</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#python-捕捉ctrl-c异常方法" title="python 捕捉ctrl+c异常方法">python 捕捉ctrl+c异常方法</a></div></div></div></div> <footer class="footer" data-v-fdbf4940><div class="footer-left-wrap" data-v-fdbf4940><ul class="contact" data-v-fdbf4940></ul></div> <div class="footer-right-wrap" data-v-fdbf4940><ul class="copyright" data-v-fdbf4940></ul></div></footer></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.1cdf4e16.js" defer></script><script src="/assets/js/6.827eb7e7.js" defer></script><script src="/assets/js/3.7a77b099.js" defer></script><script src="/assets/js/23.03740915.js" defer></script>
+  </body>
+</html>
